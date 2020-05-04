@@ -15,8 +15,10 @@ ARG GEM_NAME
 WORKDIR /$GEM_NAME
 
 ARG BUNDLER_VERSION
+ARG RAILS_VERSION
 RUN gem update --system && \
-    gem install bundler:$BUNDLER_VERSION
+    gem install bundler:$BUNDLER_VERSION && \
+    gem install rails:$RAILS_VERSION
 
 # https://github.com/bundler/bundler/issues/6154
 ENV BUNDLE_GEMFILE='/app/Gemfile'
