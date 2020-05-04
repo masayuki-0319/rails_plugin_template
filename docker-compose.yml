@@ -17,7 +17,7 @@ services:
       - .env
     volumes:
       - bundle_install:/usr/local/bundle
-      - "./:/${GEM_NAME}"
+      - "./:/app"
     stdin_open: true
     tty: true
 volumes:
