@@ -9,14 +9,14 @@ services:
       context: .
       dockerfile: ./docker/ruby/Dockerfile.dev
       args:
-        BUNDLER_VERSION: "2.1.4"
-        RUBY_VERSION: "2.7.1-alpine3.11"
-        RAILS_VERSION: "6"
-    ports:
-      - 3000:3000
+        GEM_NAME: "${GEM_NAME}"
+        BUNDLER_VERSION: "${BUNDLER_VERSION}"
+        RUBY_VERSION: "${RUBY_VERSION}"
+    env_file:
+      - .env
     volumes:
       - bundle_install:/usr/local/bundle
-      - ./:/app:cached
+      - "./:/${GEM_NAME}"
     stdin_open: true
     tty: true
 volumes:
