@@ -17,8 +17,6 @@ services:
     volumes:
       - bundle_install:/usr/local/bundle
       - ./:/app:cached
-    env_file:
-      - .env.dev
     stdin_open: true
     tty: true
 volumes:
