@@ -1,0 +1,25 @@
+version: '3'
+services:
+  datastore:
+    image: busybox
+    volumes:
+      - bundle_install:/usr/local/bundle
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/ruby/Dockerfile.dev
+      args:
+        BUNDLER_VERSION: "2.1.4"
+        RUBY_VERSION: "2.7.1-alpine3.11"
+        RAILS_VERSION: "6"
+    ports:
+      - 3000:3000
+    volumes:
+      - bundle_install:/usr/local/bundle
+      - ./:/app:cached
+    env_file:
+      - .env.dev
+    stdin_open: true
+    tty: true
+volumes:
+  bundle_install:
