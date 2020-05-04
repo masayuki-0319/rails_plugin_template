@@ -2,28 +2,26 @@
 Rails plugin template with Docker.
 
 # How to use
-
-```env:.env
-# ./.env
-
-# Change to your gem name.
-GEM_NAME=gem_name
-
-# Change to your development versions.
-BUNDLER_VERSION=2.1.4
-RUBY_VERSION=2.7.1-alpine3.11
-```
-
+## Generate template
 ```bash:bash
 $ git clone https://github.com/masayuki-0319/rails_plugin_template.git
 
+$ docker-compose run -rm app bundle gem ${GEM_NAME} --test=rspec --mit --no-coc
+
+$ cp -rf ./docker docker-compose.yml ${GEM_NAME}
+
+$ cat <<TEXT >> .gitignore
+${GEM_NAME}/*
+TEXT
+
+$ cd ${GEM_NAME}/
+
+$ git init
+
+$ git commit -am "first commit"
+
+# Start development
 $ docker-compose up -d
-
-# Case 1
-$ bundle gem ${GEM_NAME} --test=rspec --mit --no-coc
-
-# Case 2
-$ rails plugin new ${GEM_NAME} -m ../rails_plugin_template.rb
 ```
 
 # References

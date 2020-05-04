@@ -11,11 +11,6 @@ RUN apk update && \
         ${BASE_PACKAGES} \
         ${FAVORITE_PACKAGE}
 
-# Uncomment lines if created gem template.
-# ARG GEM_NAME
-# WORKDIR /$GEM_NAME
-
-# Comment_line if created gem template.
 WORKDIR /app
 
 ARG BUNDLER_VERSION
