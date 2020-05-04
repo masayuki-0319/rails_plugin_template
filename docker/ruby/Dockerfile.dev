@@ -5,19 +5,11 @@ ENV LANG C.UTF-8 \
     TZ Asia/Tokyo
 
 ENV BASE_PACKAGES="alpine-sdk build-base tzdata" \
-    WEBPACKER_PACKAGES="python2 yarn nodejs-current nodejs-npm" \
-    DATABASE_PACKAGE="sqlite-dev mysql-client mysql-dev postgresql-dev" \
-    # REFINERY_PACKAGE="imagemagick" \
-    # ALCHEMY_PACKAGE="imagemagick" \
     FAVORITE_PACKAGE="less"
 RUN apk update && \
     apk upgrade && \
     apk --update --no-cache add \
         ${BASE_PACKAGES} \
-        ${WEBPACKER_PACKAGES} \
-        ${DATABASE_PACKAGE} \
-        # ${REFINERY_PACKAGE} \
-        # ${ALCHEMY_PACKAGE} \
         ${FAVORITE_PACKAGE}
 
 WORKDIR /app
