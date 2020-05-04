@@ -19,7 +19,11 @@ $ git clone https://github.com/masayuki-0319/rails_plugin_template.git
 
 $ docker-compose up -d
 
-$ rails plugin new ${gem_name} -m ../rails_plugin_template.rb
+# Case 1
+$ bundle gem ${GEM_NAME} --test=rspec --mit --no-coc
+
+# Case 2
+$ rails plugin new ${GEM_NAME} -m ../rails_plugin_template.rb
 ```
 
 # References
