@@ -6,20 +6,22 @@ Rails plugin template with Docker.
 ```bash:bash
 $ git clone https://github.com/masayuki-0319/rails_plugin_template.git
 
-$ docker-compose run -rm app bundle gem ${GEM_NAME} --test=rspec --mit --no-coc
+# Case1: Shell script
+$ chmod 777 create_gem_template.sh
+$ create_gem_template.sh $GEM_NAME
 
-$ cp -rf ./docker docker-compose.yml ${GEM_NAME}
-
+# Case2: Manual command
+$ docker-compose run -rm app bundle gem $GEM_NAME --test=rspec --mit --no-coc
+$ cp -rf ./docker docker-compose.yml $GEM_NAME
 $ cat <<TEXT >> .gitignore
-${GEM_NAME}/*
+$GEM_NAME/*
 TEXT
-
-$ cd ${GEM_NAME}/
-
+$ cd $GEM_NAME/
 $ git init
-
 $ git commit -am "first commit"
+```
 
+```bash:bash
 # Start development
 $ docker-compose up -d
 ```
